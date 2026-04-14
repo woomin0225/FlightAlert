@@ -2,10 +2,10 @@ from datetime import datetime, timedelta
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-from amadeus_client import get_lowest_price
-from config import CHECK_INTERVAL_HOURS
-from db import get_active_alerts, update_last_notified
-from notifier import send_alert_email
+from .amadeus_client import get_lowest_price
+from .config import CHECK_INTERVAL_HOURS
+from .db import get_active_alerts, update_last_notified
+from .notifier import send_alert_email
 
 
 def check_prices():

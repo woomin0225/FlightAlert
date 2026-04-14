@@ -4,7 +4,7 @@ except Exception:  # pragma: no cover - optional runtime dependency
     Client = None
     ResponseError = Exception
 
-from config import AMADEUS_CLIENT_ID, AMADEUS_CLIENT_SECRET, AMADEUS_HOSTNAME
+from .config import AMADEUS_CLIENT_ID, AMADEUS_CLIENT_SECRET, AMADEUS_HOSTNAME
 
 _client = None
 _client_key = None
@@ -14,6 +14,7 @@ def get_client():
     global _client, _client_key
     if Client is None:
         raise RuntimeError("amadeus 패키지가 설치되어 있지 않습니다.")
+
     client_id = AMADEUS_CLIENT_ID
     client_secret = AMADEUS_CLIENT_SECRET
     hostname = AMADEUS_HOSTNAME or "test"
@@ -28,7 +29,6 @@ def get_client():
 
 
 def get_lowest_price(origin, destination, departure_date, adults=1, currency="KRW"):
-    """주어진 조건의 최저가를 반환하고, 실패하면 None을 반환합니다."""
     try:
         client = get_client()
         response = client.shopping.flight_offers_search.get(
@@ -53,7 +53,6 @@ def get_lowest_price(origin, destination, departure_date, adults=1, currency="KR
 
 
 def test_connection():
-    """공항 검색 API로 자격증명과 연결 상태를 확인합니다."""
     try:
         client = get_client()
         client.reference_data.locations.get(keyword="ICN", subType="AIRPORT")

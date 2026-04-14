@@ -2,7 +2,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from config import SMTP_HOST, SMTP_PASSWORD, SMTP_PORT, SMTP_USER
+from .config import SMTP_HOST, SMTP_PASSWORD, SMTP_PORT, SMTP_USER
 
 
 def send_alert_email(to_email, origin, destination, departure_date, current_price, target_price, currency):

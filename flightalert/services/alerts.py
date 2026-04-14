@@ -1,4 +1,4 @@
-from db import add_alert, deactivate_alert, init_db, list_alerts
+from backend.db import add_alert, deactivate_alert, init_db, list_alerts
 
 
 def ensure_alert_db():
